@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>THE dOWNpOUR</title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="dp">
+  <meta name="apple-mobile-web-app-title" content="dp">
+  <meta name="msapplication-starturl" content="/index.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #video-bg {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    #video-bg>video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 1. No object-fit support: */
+    @media (min-aspect-ratio: 16/9) {
+      #video-bg>video {
+        height: 300%;
+        top: -100%;
+      }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      #video-bg>video {
+        width: 300%;
+        left: -100%;
+      }
+    }
+
+    /* 2. If supporting object-fit, overriding (1): */
+    @supports (object-fit: cover) {
+      #video-bg>video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* object-fit: cover; */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="video-bg">
+      <video poster="img/poster.png" id="videoBG" playsinline preload autoplay muted loop>
+        <source src="vid/Cover page - 1250.webm" type="video/webm">
+        <!-- <source src="vid/Cover page.mp4" type="video/mp4"> -->
+      </video>
+    </div>
+  </div>
+</body>
+
+</html>
